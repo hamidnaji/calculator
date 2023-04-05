@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainFragment">
+
+
+        <TextView
+            android:id="@+id/text_view_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_text_viwe"
+            android:textSize="20sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="result"
+
+            />
+
+        <EditText
+            android:id="@+id/text_view_expression"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:background="@drawable/bg_text_viwe"
+            android:layout_weight="2"
+            android:text="(4+2)*3-3+(1+3)/2"
+            android:textAlignment="gravity"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="20sp" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content">
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <TableLayout
+            android:id="@+id/number_pad_table_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="8dp"
+
+            >
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="#DD410F"
+                    android:text="c"
+
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="#5600BCD4"
+
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="#56007FD4"
+                    android:text="remove"
+
+
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_close_par"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_operators"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:text="("
+
+                    />
+
+
+            </TableRow>
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_seven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="7" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_eight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="8" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_nine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="9" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_open_par"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_operators"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:text=")"
+
+                    />
+
+            </TableRow>
+
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_numbers"
+
+                    android:text="4" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="5" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_six"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="6" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_multiply_operator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_operators"
+                    android:text="*" />
+
+            </TableRow>
+
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="2"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="3" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_divide_operator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_operators"
+                    android:text="/" />
+
+
+            </TableRow>
+
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/bg_btn_numbers"
+                    android:text="0" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_plus_operator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_operators"
+                    android:text="+"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_minus_operator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+
+                    android:background="@drawable/bg_operators"
+                    android:text="_"
+
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_equation_operator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:background="#4CAF50"
+                    android:text="=" />
+
+            </TableRow>
+
+
+        </TableLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
