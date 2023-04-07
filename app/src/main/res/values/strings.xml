@@ -2,4 +2,6 @@
     <string name="app_name">calculator</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sample_expression">1.115+(2.2*3.3-(14.4/5+6.125)*7.12)*18</string>
+
 </resources>

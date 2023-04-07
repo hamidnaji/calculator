@@ -35,8 +35,7 @@
             android:gravity="top"
             android:background="@drawable/bg_text_viwe"
             android:layout_weight="2"
-            android:text="(4+2)*3-3+(1+3)/2"
-            android:textAlignment="gravity"
+            android:text="@string/sample_expression"            android:textAlignment="gravity"
             android:layout_marginTop="5dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
@@ -76,11 +75,14 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_double"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:background="#5600BCD4"
+                    android:textSize="15sp"
+                    android:text="\u25CF"
+                    android:background="@drawable/bg_operators"
 
 
                     />

@@ -1,5 +1,8 @@
 package com.example.calculator
 
+import Conversion
+import Evaluation
+import Sepration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +12,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.calculator.calculation.converting.Conversion
-import com.example.calculator.calculation.evalution.Execution
+
 import com.example.calculator.databinding.FragmentMainBinding
 
 
@@ -26,6 +28,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
 
 
         val binding = DataBindingUtil.inflate<FragmentMainBinding>(
@@ -46,9 +49,14 @@ class MainFragment : Fragment() {
             //condition to avoid exception
             if (expressionEditText.text.toString() != "") {
                 val stringBuilder = StringBuilder(expressionEditText.text.toString())
-                val removeRange =
-                    stringBuilder.removeRange(expressionEditText.length() - 1, expressionEditText.length())
-                expressionEditText.text = removeRange.toString()
+                val length = expressionEditText.length()
+
+                val removedRange =
+                    stringBuilder.removeRange(
+                        length - 1,
+                        length
+                    )
+                expressionEditText.text = removedRange.toString()
             }
         }
 
@@ -66,25 +74,27 @@ class MainFragment : Fragment() {
                 return@setOnClickListener
 
 
+            try {
+
+
                 //to convert infix expression to postfix
-                val conversion = Conversion()
-                val postfix = conversion.infixToPostfix(expressionEditText.text.toString())
+                val sepration = Sepration()
+                val sepratedList = sepration.getSepratedList(expressionEditText.text.toString())
 
-                //to convert postfix expression to number
-                val execution = Execution()
-                val resultNumber = execution.evaluate(postfix)
+                val conversion = Conversion(sepratedList)
+                val postfixList = conversion.infixToPostfix()
+
+                val evaluation = Evaluation(postfixList)
+                val resultNumber = evaluation.postfixToNumber()
+
+                resultText.text = resultNumber.toString()
+
+            } catch (e: NoSuchElementException) {
+                resultText.text = "Invalid Expression"
+
+            }
 
 
-                val validationResult = validateExpression(expressionEditText.text.toString())
-
-
-                if (!validationResult)
-                    resultText.text = "Invalid expression"
-                else if (resultNumber.contains("Invalid"))
-                    resultText.text = "Invalid expression"
-                else
-                    resultText.text = resultNumber
-            
         }
 
 
@@ -100,7 +110,7 @@ class MainFragment : Fragment() {
     private fun addOnClickListener(binding: FragmentMainBinding) {
 
 
-        binding.btnZero.setOnClickListener{
+        binding.btnZero.setOnClickListener {
             getTextOfButton(it)
         }
         binding.btnOne.setOnClickListener {
@@ -142,6 +152,9 @@ class MainFragment : Fragment() {
         }
 
 
+        binding.btnDouble.setOnClickListener {
+            getTextOfButton(it)
+        }
         binding.btnPlusOperator.setOnClickListener {
             getTextOfButton(it)
         }
@@ -165,41 +178,23 @@ class MainFragment : Fragment() {
 
     private fun getTextOfButton(view: View?) {
 
-
-        val text = expressionEditText.text
+        val stringBuilder = StringBuilder(expressionEditText.text.toString())
         val button = view as Button
-        expressionEditText.text = text.toString() + button.text.toString()
-    }
+
+        val id = button.id
+
+        if (id == R.id.btn_minus_operator)
+            stringBuilder.append("-")
+        else if (id == R.id.btn_double)
+            stringBuilder.append(".")
+        else
+            stringBuilder.append(button.text.toString())
 
 
-//    returns false if expression has error otherwise returns true
-    private fun validateExpression(exp: String): Boolean {
-
-        val len = exp.length
-        var result1 = true // to avoid two repeated operator --> 12++
-        var result2 = true // to avoid coming operator at the end of expression --> 1+
-        var result3 = true // to avoid numbers more than one digit
-
-        for (i in 0..len - 2)
-            if (isOperator(exp[i]) && isOperator(exp[i + 1]))
-                result1 = false
-
-
-        if (isOperator(exp[len - 1]))
-            result2 = false
-
-        for (i in 0..len - 2)
-            if (isDigit(exp[i]) && isDigit(exp[i + 1]))
-                result3 = false
-
-        if (!result3)
-            Toast.makeText(context, "just one digit numberes", Toast.LENGTH_SHORT).show()
-
-
-
-        return result1 && result2 && result3
+        expressionEditText.text = stringBuilder.toString()
 
     }
+
 
     private fun isOperator(char: Char): Boolean {
 
